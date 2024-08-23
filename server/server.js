@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const multer = require('multer');
 const cors = require('cors');
@@ -15,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 const MODEL_NAME = 'models/text-bison-001';
-const API_KEY = 'AIzaSyB5E49ClaNYKfiUpdWBpdWR5PTVVUnlAPU'; // Replace with your actual API key
+const API_KEY = process.env.GOOGLE_API_KEY;
 
 const client = new TextServiceClient({
   authClient: new GoogleAuth().fromAPIKey(API_KEY),
